@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <title>Sketchify</title>
+</head>
+<body>
+<div class="board" >
+    <h1>Sketchify</h1>
+    <form action="#" th:action="@{/}" th:object="${url}" method="post">
+        <input type="text" placeholder="Type a Url to sketchify" th:field="*{originalUrl}"/>
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
+
+<table class="links">
+    <tr th:if="${urls.size()} > 0">
+        <th>Original Address</th>
+        <th>Sketchy Address</th>
+        <th></th>
+    </tr>
+    <tr th:each="selectedUrl : ${urls}">
+            <td >
+                <a th:href="${selectedUrl.originalUrl}" href="${selectedUrl.originalUrl}" th:text="${selectedUrl.originalUrl}"></a>
+            </td>
+            <td>
+                <a href="${selectedUrl.bijectedUrl}" th:href="${selectedUrl.bijectedUrl}" th:text="${selectedUrl.bijectedUrl}"></a>
+            </td>
+            <td>
+                <form action="#" th:action="@{'/delete/{id}'(id=${selectedUrl.id})}" th:method="post" >
+                    <input type="hidden" name="_method" value="post" />
+                    <button type="submit" id="submitButton" class="delete"> </button>
+                </form>
+            </td>
+    </tr>
+</table>
+</body>
+<footer>
+    <span>Created by Micah</span>
+    <a href="https://github.com/MicahGV">
+        <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/micah-vigeant/">
+        <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+    <a href="https://codepen.io/Micahvig/">
+        <i class="fa fa-codepen fa-lg" aria-hidden="true"></i>
+    </a>
+</footer>
+<script src="https://use.fontawesome.com/0b8fd85a37.js"></script>
+</html>
