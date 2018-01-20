@@ -19,4 +19,4 @@ I created this as a learning experience and it also made me laugh
 ### Hosting
 Hosted on Heroku 
 
-[Sketchify](https://sketchify.herokuapp.com/)
+[Sketchify](https://xtz.herokuapp.com/)
